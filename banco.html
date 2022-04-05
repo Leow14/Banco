@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banco</title>
+    <script>
+        var nome = prompt("Digite seu nome?")
+        alert("Olá " + nome + " é um prazer ter você aqui")
+        
+        var saldo = 10000.00; //Float
+		
+		function inicio() {
+            
+			var escolha = parseInt(prompt('Selecione uma opção 1.) Saldo 2.) Depósito 3.) Saque 4.) Extrato 5.) Transferência 6.) Sair '));
+
+
+			if (escolha === 1) {
+				ver_saldo();
+			} else if (escolha === 2) {
+				fazer_deposito();
+			} else if (escolha === 3) {
+				fazer_saque();
+			} else if (escolha === 4) {
+				extrato();
+            } else if (escolha === 5) {
+                transf();
+            } else if (escolha === 6) {
+                sair();
+			} else {
+				erro();
+			}
+		}		
+
+		function ver_saldo() {
+			alert('Seu saldo atualizado é: ' + saldo);
+			inicio();
+		}
+
+		function fazer_deposito() {
+			var deposito = parseFloat(prompt('Qual o valor para depósito?'));
+			// Not a Number -> Isso é um não-número?
+			if (isNaN(deposito) || deposito === '') {
+				alert('Por favor, informe um número!');
+				fazer_deposito();
+			} else {
+				saldo = saldo + deposito;
+                //saldo += deposito; 
+
+				ver_saldo();
+			}
+		}
+
+		function fazer_saque() {
+			var saque = parseFloat(prompt('Qual o valor para saque?'));
+			if (isNaN(saque) || saque === '') {
+				alert('Por favor, informe um número:');
+                
+			} else {
+				saldo -= saque;
+				ver_saldo();
+			}
+		}
+
+		function erro() {
+			alert('Por favor, informe um número entre 1 e 6');
+			inicio();
+		}
+
+        function extrato() {
+            alert('Seu extrato é o seguinte:\nPadaria do Will : -50\nFarmácia : -150\nBurguer King : -100\nLivraria Saraiva : -260')
+            inicio();
+        }
+
+		function sair() {
+			var confirma = confirm('Você deseja sair?');
+			if (confirma) {
+				window.close();
+			} else {
+
+				inicio();
+			}
+		}
+
+
+        function transf() {
+			var conta = prompt("Qual conta quer depositar?")
+            if(conta == isNaN){
+			}
+			else{
+				var valor = parseInt(prompt("Qual o valor que quer depositar?"))
+				if(valor < saldo){
+                saldo -= valor
+                alert("Seu saldo atual é de " + saldo)
+				inicio();
+				}
+				else{
+					alert("Não possível realizar essa operação, saldo insuficiente.")
+					inicio();
+				}
+            }
+            }
+		inicio();
+
+    </script>
+</head>
+<body>
+
+    
+</body>
+</html>
